@@ -34,30 +34,31 @@ while (true)
             where användare.Name == angivetNamn
             select användare;
 
+        Console.Write("Ange lösenord: ");
+        string angivetLösen = Console.ReadLine();
 
+
+        IEnumerable<Customer> passwordQuery = from lösen in Customers
+            where lösen.Name == angivetLösen
+            select lösen;
 
 
     }
-    Console.Write("Ange lösenord: ");
-    string angivetLösen = Console.ReadLine();
-
-
-    IEnumerable<Customer> passwordQuery = from lösen in Customers
-        where lösen.Name == angivetLösen
-        select lösen;
-
-
-
-
-
-
-
+    
 
     if (val == "2")
     {
         Customers.Add(Customer.AddNew());
+        Console.WriteLine("Inloggad!");
 
     }
+
+
+
+
+
+
+
 
 }
 
