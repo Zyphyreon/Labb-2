@@ -30,8 +30,12 @@ namespace Labb_2
         }
 
 
-        
 
+        enum Meny
+        {
+            
+        }
+        
 
     }
 

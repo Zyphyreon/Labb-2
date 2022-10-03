@@ -16,53 +16,48 @@ Customers.Add(customer1);
 Customers.Add(customer2);
 Customers.Add(customer3);
 
-Console.Write("Välkommen. Vill du logga in(1), eller skapa en ny användare(2)? ");
-string val = Console.ReadLine();
 
-if (val == "1")
+
+
+
+while (true)
 {
-    Console.Write("Ange användarnamn: ");
-    string angivetNamn = Console.ReadLine();
-    foreach (Customer customer in Customers)
+    Console.Write("Välkommen. Vill du logga in(1), eller skapa en ny användare(2)? ");
+    string val = Console.ReadLine();
+    if (val == "1")
     {
-        if (angivetNamn != customer.Name)
-        {
-            Console.Write("Du har angivit ett felaktigt användarnamn. Vänligen försök igen: ");
-            angivetNamn = Console.ReadLine();
+        Console.Write("Ange användarnamn: ");
+        string angivetNamn = Console.ReadLine();
 
-        }
-        else
-        {
-            
-            
-            break;
-        }
+
+        IEnumerable<Customer> userQuery = from användare in Customers
+            where användare.Name == angivetNamn
+            select användare;
+
+
+
+
     }
-
     Console.Write("Ange lösenord: ");
     string angivetLösen = Console.ReadLine();
-    foreach (Customer customer in Customers)
+
+
+    IEnumerable<Customer> passwordQuery = from lösen in Customers
+        where lösen.Name == angivetLösen
+        select lösen;
+
+
+
+
+
+
+
+
+    if (val == "2")
     {
-        if (angivetLösen != customer.Name)
-        {
-            Console.Write("Du har angivit ett felaktigt lösenord. Vänligen försök igen: ");
-            angivetLösen = Console.ReadLine();
+        Customers.Add(Customer.AddNew());
 
-        }
-        else
-        {
-            break;
-        }
     }
-
-
-
-    
-}
-
-if (val == "2")
-{
-    Customers.Add(Customer.AddNew());
 
 }
 
