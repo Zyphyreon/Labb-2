@@ -16,8 +16,56 @@ Customers.Add(customer1);
 Customers.Add(customer2);
 Customers.Add(customer3);
 
+Console.Write("Välkommen. Vill du logga in(1), eller skapa en ny användare(2)? ");
+string val = Console.ReadLine();
 
-Customers.Add(Customer.AddNew());
+if (val == "1")
+{
+    Console.Write("Ange användarnamn: ");
+    string angivetNamn = Console.ReadLine();
+    foreach (Customer customer in Customers)
+    {
+        if (angivetNamn != customer.Name)
+        {
+            Console.Write("Du har angivit ett felaktigt användarnamn. Vänligen försök igen: ");
+            angivetNamn = Console.ReadLine();
+
+        }
+        else
+        {
+            
+            
+            break;
+        }
+    }
+
+    Console.Write("Ange lösenord: ");
+    string angivetLösen = Console.ReadLine();
+    foreach (Customer customer in Customers)
+    {
+        if (angivetLösen != customer.Name)
+        {
+            Console.Write("Du har angivit ett felaktigt lösenord. Vänligen försök igen: ");
+            angivetLösen = Console.ReadLine();
+
+        }
+        else
+        {
+            break;
+        }
+    }
+
+
+
+    
+}
+
+if (val == "2")
+{
+    Customers.Add(Customer.AddNew());
+
+}
+
 
 
 
