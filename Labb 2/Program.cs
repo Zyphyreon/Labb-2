@@ -16,65 +16,168 @@ Customers.Add(customer1);
 Customers.Add(customer2);
 Customers.Add(customer3);
 
+bool utloggad = true;
+string val = string.Empty;
+int x = 1;
+string y = string.Empty;
 
-
-
-
-while (true)
+while(true)
 {
-    Console.Write("Välkommen. Vill du logga in(1), eller skapa en ny användare(2)? ");
-    string val = Console.ReadLine();
-    if (val == "1")
+    while (utloggad == true)
     {
-        Console.Write("Ange användarnamn: ");
-        string angivetNamn = Console.ReadLine();
+        Console.Write("Välkommen. Vill du logga in(1), eller skapa en ny användare(2)? ");
+        val = Console.ReadLine();
+        if (val == "1")
+        {
+            while (utloggad = true)
+            {
+                Console.Write("Ange användarnamn: ");
+                string angivetNamn = Console.ReadLine();
+
+                int index = Customers.FindIndex(customer => customer.Name == angivetNamn);
+                if (index < 0)
+                {
+                    Console.WriteLine("Du har inte angivit ett existerande användarnamn. Vill du skapa en ny användare(1) eller försöka igen(2)?");
+                    val = Console.ReadLine();
+                    if (val == "1")
+                    {
+                        Customers.Add(Customer.AddNew());
+                    }
+
+                }
+                else
+                {
+                    while (true)
+                    {
+                        Console.Write("Ange lösenord: ");
+                        string angivetLösen = Console.ReadLine();
+                        if (angivetLösen == Customers[index].Password)
+                        {
+                            utloggad = false;
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Felaktigt lösenord. Vänligen försök igen.");
+                        }
+
+                    }
+
+                }
+
+                if (utloggad == false)
+                {
+                    break;
+                }
 
 
-        IEnumerable<Customer> userQuery = from användare in Customers
-            where användare.Name == angivetNamn
-            select användare;
-
-        Console.Write("Ange lösenord: ");
-        string angivetLösen = Console.ReadLine();
-
-
-        IEnumerable<Customer> passwordQuery = from lösen in Customers
-            where lösen.Name == angivetLösen
-            select lösen;
+            }
+            if (utloggad == false)
+            {
+                break;
+            }
 
 
+        }
+        if (val == "2")
+        {
+            Customers.Add(Customer.AddNew());
+
+        }
     }
-    
-
-    if (val == "2")
+    Console.WriteLine("Inloggad!");
+    while (utloggad == false)
     {
-        Customers.Add(Customer.AddNew());
-        Console.WriteLine("Inloggad!");
+        Console.Write("Välj vad du vill göra: Handla(1), Se kundvagn(2), gå till kassan(3), Logga ut(8): ");
+        val = Console.ReadLine();
+        if (val == "1")
+        {
+            while (true)
+            {
+                foreach (Product product in Products)
+                {
 
+                    Console.WriteLine("\nProdukt: " + product.Name + ", Pris: " + product.Price + " SEK");
+                    Console.WriteLine("Klicka på " + x + " för att lägga vara i kundvagn.");
+
+                    x++;
+                }
+
+                Console.WriteLine("\nKlicka på " + (x + 1) + " för att gå till huvudmenyn.");
+                y = Convert.ToString(x + 1);
+                val = Console.ReadLine();
+
+                if (val == "1")
+                {
+                    //Products.Add();
+
+                }
+
+                if (val == y)
+                {
+                    break;
+                }
+            }
+
+        }
+
+        if (val == "2")
+        {
+            Console.WriteLine("Din Kundvagn: ");
+            Console.WriteLine(Customers[index].Cart);
+        }
+
+        if (val == "3")
+        {
+
+        }
+        if (val == "8")
+        {
+            Console.WriteLine("Du har loggats ut.");
+            utloggad = true;
+        }
     }
 
-
-
-
-
-
-
-
 }
 
 
 
+//foreach (Product product in Products)
+//{
+//    Console.WriteLine("Produkt: " + product.Name + ", Pris: " + product.Price + " SEK");
+//}
+
+//foreach (Customer customer in Customers)
+//{
+//    Console.WriteLine(customer.Name);
+//}
+
+//foreach (Customer customer in Customers)
+//{
+//    if (customer.Name == angivetNamn)
+//    {
+
+//        Console.Write("Ange lösenord: ");
+//        string angivetLösen = Console.ReadLine();
+//        break;
+//    }
+//}
 
 
-foreach (Product product in Products)
-{
-    Console.WriteLine("Produkt: " + product.Name + ", Pris: " + product.Price + " SEK");
-}
+//IEnumerable<Customer> userQuery = from användare in Customers
+//    where användare.Name == angivetNamn
+//    select användare;
 
-foreach (Customer customer in Customers)
-{
-    Console.WriteLine(customer.Name);
-}
+
+
+
+
+//IEnumerable<Customer> passwordQuery = from lösen in Customers
+//    where lösen.Name == angivetLösen
+//    select lösen;
+
+
+
 
 //  Meny: Val 1 Logga in, Val 2 Skapa ny användare
 

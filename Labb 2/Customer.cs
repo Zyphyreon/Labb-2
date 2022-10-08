@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Labb_2;
@@ -13,7 +14,7 @@ namespace Labb_2
     {
         public string Name { get; private set; }
 
-        private string Password { get; set; }
+        public string Password { get; set; }
 
         private List<Product> _cart;
         public List<Product> Cart { get { return _cart; } }
@@ -27,9 +28,9 @@ namespace Labb_2
 
         public static Customer AddNew()
         {
-            Console.Write("Ange Användarnamn: ");
+            Console.Write("Välj ett Användarnamn: ");
             string login = Console.ReadLine();
-            Console.Write("Ange lösenord: ");
+            Console.Write("Välj ett lösenord: ");
             string angivet = Convert.ToString(Console.ReadLine());
             Console.Write("Bekräfta ditt lösenord genom att skriva det igen: ");
             string lösenord = Convert.ToString(Console.ReadLine());
@@ -50,6 +51,9 @@ namespace Labb_2
             
 
         }
+
+        
+        
 
     }
 }
