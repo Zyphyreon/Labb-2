@@ -9,7 +9,7 @@ namespace Labb_2
 {
     public class Product
     {
-        //private string Name { get;  set; }
+        
 
         private string _name;
 
@@ -19,7 +19,7 @@ namespace Labb_2
             set { _name = value; }
         }
 
-        //private double Price { get; set; }
+        
 
         private double _price;
 
@@ -31,10 +31,6 @@ namespace Labb_2
 
 
 
-        //enum Meny
-        //{
-            
-        //}
         
 
     }

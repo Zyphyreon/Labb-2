@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Net.Mime;
 using Labb_2;
 
 List<Product> Products = new List<Product>();
@@ -46,10 +47,7 @@ while(true)
                     }
                     else if (val == "2")
                     {
-                        Console.Write("Ange användarnamn: ");
-                        angivetNamn = Console.ReadLine();
-
-                        index = Customers.FindIndex(customer => customer.Name == angivetNamn);
+                        
                     }
                     else
                     {
@@ -100,10 +98,12 @@ while(true)
         
     }
     Console.WriteLine("Inloggad!");
+    
     while (utloggad == false)
     {
         Console.Write("Välj vad du vill göra: Handla(1), Se kundvagn(2), gå till kassan(3), Logga ut(8): ");
         val = Console.ReadLine();
+        Console.Clear();
         if (val == "1")
         {
             while (true)
@@ -113,7 +113,7 @@ while(true)
                 {
 
                     Console.WriteLine("\nProdukt: " + product.Name + ", Pris: " + product.Price + " SEK");
-                    Console.WriteLine("Klicka på " + x + " för att lägga vara i kundvagn.");
+                    Console.WriteLine("Klicka på " + x + " för att lägga varan i kundvagn.");
 
                     x++;
                 }
@@ -125,22 +125,30 @@ while(true)
                 if (val == "1")
                 {
                     Customers[index].Cart.Add(Products[0]);
+                    Console.Clear();
 
                 }
                 if (val == "2")
                 {
                     Customers[index].Cart.Add(Products[1]);
+                    Console.Clear();
 
                 }
                 if (val == "3")
                 {
                     Customers[index].Cart.Add(Products[2]);
+                    Console.Clear();
 
                 }
 
                 if (val == y)
                 {
+                    
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("Vänligen välj ett av de presenterade alternativen.");
                 }
 
                 x = 1;
@@ -151,24 +159,70 @@ while(true)
         if (val == "2")
         {
             double totalpris = 0;
+            int frukt1 = 0;
+            int frukt2 = 0;
+            int frukt3 = 0;
             Console.WriteLine("Din Kundvagn: ");
+            foreach (Product product in Products)
+            {
+
+                 frukt1 = Customers[index].Cart.Count(product => product.Name == "Äpple");
+                 frukt2 = Customers[index].Cart.Count(product => product.Name == "Päron");
+                 frukt3 = Customers[index].Cart.Count(product => product.Name == "Banan");
+                 
+                //Console.WriteLine(product.Price + " SEK" + " per " + product.Name);          //Visa antal produkter
+                
+
+            }
             foreach (Product product in Customers[index].Cart)
             {
-                Console.WriteLine(product.Name + " " + product.Price + " SEK");
                 totalpris += product.Price;
             }
-            Console.WriteLine("Summa: " + totalpris + " SEK");
+
+            if (frukt1 > 0)
+            {
+                Console.WriteLine(frukt1 + "st Äpplen");
+            }
+            if (frukt2 > 0)
+            {
+                Console.WriteLine(frukt2 + "st Päron");
+            }
+            if (frukt3 > 0)
+            {
+                Console.WriteLine(frukt3 + "st Bananer");
+            }
+            if (frukt1 >= 1)
+            {
+                Console.WriteLine(Products[0].Price + " SEK per Äpple");
+            }
+            if (frukt2 >= 1)
+            {
+                Console.WriteLine(Products[1].Price + " SEK per Päron");
+            }
+            if (frukt3 >= 1)
+            {
+                Console.WriteLine(Products[2].Price + " SEK per Banan");
+            }
+
+
+
+            Console.WriteLine("\nSumma: " + totalpris + " SEK");
             //Console.WriteLine(Customers[index].Cart);
         }
 
         if (val == "3")
         {
-
+            Console.WriteLine("Ha en trevlig dag!");
+            Environment.Exit(1);
         }
         if (val == "8")
         {
             Console.WriteLine("Du har loggats ut.");
             utloggad = true;
+        }
+        else
+        {
+            Console.WriteLine("Vänligen välj ett av de presenterade alternativen.");
         }
     }
 
