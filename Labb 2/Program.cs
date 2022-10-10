@@ -20,6 +20,7 @@ bool utloggad = true;
 string val = string.Empty;
 int x = 1;
 string y = string.Empty;
+int index = 0;
 
 while(true)
 {
@@ -34,7 +35,7 @@ while(true)
                 Console.Write("Ange användarnamn: ");
                 string angivetNamn = Console.ReadLine();
 
-                int index = Customers.FindIndex(customer => customer.Name == angivetNamn);
+                index = Customers.FindIndex(customer => customer.Name == angivetNamn);
                 if (index < 0)
                 {
                     Console.WriteLine("Du har inte angivit ett existerande användarnamn. Vill du skapa en ny användare(1) eller försöka igen(2)?");
@@ -43,6 +44,18 @@ while(true)
                     {
                         Customers.Add(Customer.AddNew());
                     }
+                    else if (val == "2")
+                    {
+                        Console.Write("Ange användarnamn: ");
+                        angivetNamn = Console.ReadLine();
+
+                        index = Customers.FindIndex(customer => customer.Name == angivetNamn);
+                    }
+                    else
+                    {
+                        Console.Write("Vänligen välj alternativ 1 eller 2: ");
+                    }
+                    
 
                 }
                 else
@@ -74,7 +87,7 @@ while(true)
             }
             if (utloggad == false)
             {
-                break;
+               break;
             }
 
 
@@ -84,6 +97,7 @@ while(true)
             Customers.Add(Customer.AddNew());
 
         }
+        
     }
     Console.WriteLine("Inloggad!");
     while (utloggad == false)
@@ -94,6 +108,7 @@ while(true)
         {
             while (true)
             {
+                
                 foreach (Product product in Products)
                 {
 
@@ -109,7 +124,17 @@ while(true)
 
                 if (val == "1")
                 {
-                    //Products.Add();
+                    Customers[index].Cart.Add(Products[0]);
+
+                }
+                if (val == "2")
+                {
+                    Customers[index].Cart.Add(Products[1]);
+
+                }
+                if (val == "3")
+                {
+                    Customers[index].Cart.Add(Products[2]);
 
                 }
 
@@ -117,14 +142,23 @@ while(true)
                 {
                     break;
                 }
+
+                x = 1;
             }
 
         }
 
         if (val == "2")
         {
+            double totalpris = 0;
             Console.WriteLine("Din Kundvagn: ");
-            Console.WriteLine(Customers[index].Cart);
+            foreach (Product product in Customers[index].Cart)
+            {
+                Console.WriteLine(product.Name + " " + product.Price + " SEK");
+                totalpris += product.Price;
+            }
+            Console.WriteLine("Summa: " + totalpris + " SEK");
+            //Console.WriteLine(Customers[index].Cart);
         }
 
         if (val == "3")
@@ -137,6 +171,7 @@ while(true)
             utloggad = true;
         }
     }
+
 
 }
 
