@@ -52,11 +52,24 @@ namespace Labb_2
 
         }
 
+
+        public static string PrintCustomer(Customer customer)
+        {
+            var parsedCustomerName = customer.Name.ToString();
+            var parsedCustomerPassword = customer.Password.ToString();
+            var parsedCustomerCart = customer.Cart.ToString();
+            string compiled = string.Empty;
+            compiled += parsedCustomerName;
+            compiled += ", ";
+            compiled += parsedCustomerPassword;
+            compiled += ", ";
+            compiled += parsedCustomerCart;
+            return compiled;
+
+        }
+
+
         
-
-
-
-
 
     }
 }

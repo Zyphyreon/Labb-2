@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// Både kund och produkt ska vara separata klasser med Properties för information och metoder för att räkna ut
-// totalpris och verifiera lösenord.
 namespace Labb_2
 {
     public class Product
