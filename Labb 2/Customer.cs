@@ -5,9 +5,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Labb_2;
-// Både kund och produkt ska vara separata klasser med Properties för information och metoder för att räkna ut
-// totalpris och verifiera lösenord.
-// I klassen Kund skall det finnas en ToString() som skriver ut Namn, lösenord och kundvagnen på ett snyggt sätt.
 namespace Labb_2
 {
     public class Customer

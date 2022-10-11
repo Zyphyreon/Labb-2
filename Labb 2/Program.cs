@@ -170,7 +170,6 @@ while(true)
                  frukt2 = Customers[index].Cart.Count(product => product.Name == "Päron");
                  frukt3 = Customers[index].Cart.Count(product => product.Name == "Banan");
                  
-                //Console.WriteLine(product.Price + " SEK" + " per " + product.Name);          //Visa antal produkter
                 
 
             }
@@ -207,7 +206,6 @@ while(true)
 
 
             Console.WriteLine("\nSumma: " + totalpris + " SEK");
-            //Console.WriteLine(Customers[index].Cart);
         }
 
         if (val == "3")
@@ -228,60 +226,3 @@ while(true)
 
 
 }
-
-
-
-//foreach (Product product in Products)
-//{
-//    Console.WriteLine("Produkt: " + product.Name + ", Pris: " + product.Price + " SEK");
-//}
-
-//foreach (Customer customer in Customers)
-//{
-//    Console.WriteLine(customer.Name);
-//}
-
-//foreach (Customer customer in Customers)
-//{
-//    if (customer.Name == angivetNamn)
-//    {
-
-//        Console.Write("Ange lösenord: ");
-//        string angivetLösen = Console.ReadLine();
-//        break;
-//    }
-//}
-
-
-//IEnumerable<Customer> userQuery = from användare in Customers
-//    where användare.Name == angivetNamn
-//    select användare;
-
-
-
-
-
-//IEnumerable<Customer> passwordQuery = from lösen in Customers
-//    where lösen.Name == angivetLösen
-//    select lösen;
-
-
-
-
-//  Meny: Val 1 Logga in, Val 2 Skapa ny användare
-
-// När man ska Registrera en ny kund ska man ange Namn och lösenord. Dessa ska sparas och namnet ska inte gå att ändra.
-
-// Väljer man Logga In så ska man skriva in namn och lösenord. Om användaren inte finns registrerad ska programmet skriva ut att kunden inte
-// finns och fråga ifall man vill registrera ny kund.
-// Om lösenordet inte stämmer så ska programmet skriva ut att lösenordet är fel och låta användaren försöka igen.
-
-//  Meny: Val 1 handla, Val 2 se kundvagn, Val 3: gå till kassan.
-
-
-// Handla: Visa minst 3 olika produkter att köpa. Man ska se pris för varje produkt och kunna lägga till vara i kundvagn.
-
-//Kundvagnen ska visa alla produkter man lagt i den, styckpriset, antalet och totalpriset samt totala kostnaden för hela kundvagnen.
-//Kundvagnen skall sparas i kund och finnas tillgänglig när man loggar in.
-
-
