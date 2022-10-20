@@ -49,49 +49,25 @@ namespace Labb_2
 
         }
 
-
-        public static string PrintCustomer(Customer customer)
+        public static bool Verify(bool utloggad)
         {
-            var parsedCustomerName = customer.Name.ToString();
-            var parsedCustomerPassword = customer.Password.ToString();
-            var parsedCustomerCart = customer.Cart.ToString();
-            string compiled = string.Empty;
-            compiled += parsedCustomerName;
-            compiled += ", ";
-            compiled += parsedCustomerPassword;
-            compiled += ", ";
-            compiled += parsedCustomerCart;
-            return compiled;
-
+            return false;
         }
 
+        public override string ToString()
+        {
+            var output = string.Empty;
+            output += "Namn: " + Name;
+            output += " Lösenord " + Password;
+            output += " Kundvagn: ";
+            foreach (var product in Cart)
+            {
+                output += product;
+            }
 
-        
+            output += "\n";
+            return output;
 
+        }
     }
 }
-
-
-/*
- Exempel:
-
-    public class Customer 
-    {
-        public string Name { get; private set; }
-
-        private string Password { get; set }
-
-        private List<Product> _cart;
-        public List<Product> Cart { get { return _cart; } }
-
-        public Kund(string name, string password)
-        {
-            Name = name;
-            Password = password;
-            _cart = new List<Product>();
-        }
-    }
-    Kund1: Namn="Knatte", Password="123"
-    Kund2: Namn="Fnatte", Password="321"
-    Kund3: Namn="Tjatte", Password="213"
- */

@@ -21,7 +21,7 @@ bool utloggad = true;
 string val = string.Empty;
 int x = 1;
 string y = string.Empty;
-int index = 0;
+int index = -1;
 
 while(true)
 {
@@ -64,7 +64,7 @@ while(true)
                         string angivetLösen = Console.ReadLine();
                         if (angivetLösen == Customers[index].Password)
                         {
-                            utloggad = false;
+                            utloggad = Customer.Verify(utloggad);
                             break;
                         }
                         else
@@ -223,6 +223,4 @@ while(true)
             Console.WriteLine("Vänligen välj ett av de presenterade alternativen.");
         }
     }
-
-
 }
